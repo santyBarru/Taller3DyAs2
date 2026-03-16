@@ -1,53 +1,70 @@
-# AudioPlayer
+# Taller 3 – DYAS Music Player
 
-### Descripción del Problema:
-En este problema, tienes un reproductor de audio (`AudioPlayer`) que puede reproducir archivos de audio de distintos tipos, como MP3. Sin embargo, se ha introducido una nueva clase avanzada (`AdvancedAudioPlayer`) que puede reproducir formatos más avanzados como MP4 y VLC. Necesitas proporcionar una solución que permita a la clase `AudioPlayer` reproducir archivos utilizando la funcionalidad avanzada de la clase `AdvancedAudioPlayer` sin cambiar el código existente del reproductor de audio.
+## Descripción
 
-### Solución Propuesta:
-La solución propuesta es implementar un adaptador que permita que la interfaz `AudioPlayer` utilice la clase `AdvancedAudioPlayer` como si fuera un reproductor de audio normal.
+Este proyecto es una simulación de un reproductor de música desarrollado en **Java** para el taller de **Diseño y Arquitectura de Software (DyAS)**.
 
-### Estructura del Código:
+La idea del proyecto es aplicar el **patrón de diseño Adapter**, para poder reproducir diferentes tipos de archivos de audio usando una misma interfaz.
 
-El código consta de las siguientes clases:
+---
 
-#### `AudioPlayer` (Interfaz):
-Define la interfaz básica para un reproductor de audio.
+## Qué se utilizó
 
-#### `AdvancedAudioPlayer` (Clase):
-Proporciona funcionalidades avanzadas para reproducir archivos MP4 y VLC.
+* Java
+* Maven
+* Programación Orientada a Objetos
+* Visual Studio Code
 
-#### `AdvancedAudioPlayerAdapter` (Clase):
-Actúa como un adaptador que permite que la interfaz `AudioPlayer` utilice la funcionalidad de `AdvancedAudioPlayer`.
+Maven se utilizó para manejar la estructura del proyecto y poder compilarlo desde la terminal.
 
-#### `Client` (Clase):
-Ejemplo de cómo utilizar la interfaz `AudioPlayer` con el adaptador.
+---
 
-### Uso del Código:
+## Cómo se hizo
 
-Crea una instancia de `AudioPlayer` utilizando el adaptador `AdvancedAudioPlayerAdapter`.
-Llama a los métodos `play` y `stop` de `AudioPlayer` para reproducir y detener archivos de audio, respectivamente.
+El proyecto se creó usando la estructura estándar de **Maven**:
 
-```java
-AudioPlayer audioPlayer = new AdvancedAudioPlayerAdapter(new AdvancedAudioPlayer());
-audioPlayer.play("mp4", "video.mp4");
-audioPlayer.stop();
+```
+src/main/java
 ```
 
-### Resultado Esperado:
-El adaptador debería permitir al `AudioPlayer` reproducir archivos utilizando la funcionalidad avanzada de `AdvancedAudioPlayer` sin cambiar el código existente del reproductor de audio.
+Dentro de esta estructura se organizaron los paquetes del proyecto:
 
-Ejemplo de cómo utilizar la interfaz AudioPlayer con el adaptador.
-
-Recuerde los comandos para la ejecución del programa
-
-Para compilar
-
-```bash
-mvn compile
+```
+edu.unisabana.dyas.patterns
 ```
 
-Para ejecutar la aplicación:
+y
 
-```bash
-mvn exec:java -Dexec.mainClass=main.java.edu.unisabana.dyas.patterns.Client
 ```
+edu.unisabana.dyas.patterns.utils
+```
+
+Ahí están las clases del sistema como **Client**, **AudioPlayer**, **AdvancedAudioPlayer** y **AdvancedAudioPlayerAdapter**, que permiten reproducir diferentes formatos de archivos usando el patrón **Adapter**.
+
+---
+
+## Cómo ejecutar el proyecto
+
+1. Clonar el repositorio:
+
+```
+git clone https://github.com/santyBarru/DYAS-MusicPlayer.git
+```
+
+2. Abrir el proyecto en **Visual Studio Code**.
+
+3. Abrir la terminal dentro del proyecto.
+
+4. Compilar el proyecto:
+
+```
+mvn clean compile
+```
+
+5. Ejecutar la clase principal:
+
+```
+mvn exec:java "-Dexec.mainClass=edu.unisabana.dyas.patterns.Client"
+```
+
+Al ejecutarlo se podrá ver en la terminal cómo el reproductor reproduce archivos **mp3, mp4 y vlc**, y muestra un mensaje si el formato no es soportado.
